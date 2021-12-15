@@ -47,9 +47,9 @@ public class Usuario {
         this.nome = nome;
     }
     
-//    public void addTopico(Topico topico){
-//        if (topico != null && !getTopico().contains(topico)) {
-//            getTopico().add(topico);
-//        }
-//    }
+    public void addTopico(Topico topico){
+        if (topico != null && !getTopico().contains(topico)) {
+            getTopico().add(topico);
+        }
+    }
 }
