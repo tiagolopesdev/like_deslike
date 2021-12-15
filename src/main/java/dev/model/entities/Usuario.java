@@ -5,17 +5,11 @@
  */
 package dev.model.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,22 +28,11 @@ public class Usuario {
 
     private String nome;
 
-    @OneToOne(mappedBy = "usuario")
-    private Votos votos;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Topico> topico = new ArrayList<Topico>();
-
     public Usuario() {
     }
 
     public Usuario(String nome) {
         this.nome = nome;
     }
-    
-    public void addTopico(Topico topico){
-        if (topico != null && !getTopico().contains(topico)) {
-            getTopico().add(topico);
-        }
-    }
+
 }

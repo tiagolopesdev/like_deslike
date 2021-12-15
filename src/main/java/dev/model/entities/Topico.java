@@ -5,16 +5,10 @@
  */
 package dev.model.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,35 +20,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Topico {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
     private String assunto;
-
     private String mensagem;
-
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
-
-    private SituacaoAtualTopico sat;
 
     public Topico() {
     }
 
     public Topico(String assunto, String mensagem) {
-        this.setAssunto(assunto);
-        this.setMensagem(mensagem);
+        this.assunto = assunto;
+        this.mensagem = mensagem;
     }
 
-//    public void situacaoAtual() {
-//        if (usuario.getVotos().calcularVotos() < 0) {
-//            setSat(SituacaoAtualTopico.NEGATIVO);
-//        } else {
-//            setSat(SituacaoAtualTopico.POSITIVO);
-//        }
-//    }
-    
 }
