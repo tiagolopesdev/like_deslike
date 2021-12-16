@@ -32,12 +32,19 @@ public class Voto {
     @ManyToOne
     @JoinColumn(name = "id_topico")
     private Topico topico;
-    
+
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     public Voto() {
+    }
+
+    public Voto(Integer upVote, Integer downVote, Topico topico, Usuario usuario) {
+        this.upVote = upVote;
+        this.downVote = downVote;
+        this.topico = topico;
+        this.usuario = usuario;
     }
 
 }
