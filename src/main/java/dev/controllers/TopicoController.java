@@ -9,11 +9,14 @@ import dev.model.entities.Topico;
 import dev.model.entities.Usuario;
 import dev.service.TopicoService;
 import dev.service.UsuarioService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -32,11 +35,11 @@ public class TopicoController {
     Usuario usuario = new Usuario();
     Integer idUser;
 
-    @RequestMapping(value = "/formTopico/{id}", method = RequestMethod.GET)
-    public String formForSave(@PathVariable("id") Integer id) {
-        idUser = id;
-        return "addTopico";
-    }
+////    @RequestMapping(value = "/{id}")
+//    public String formForSave(@PathVariable("id") Integer id) {
+//        idUser = id;
+//        return "addTopico";
+//    }
 
     @RequestMapping(method = RequestMethod.POST)
     public String save(Topico t) {
@@ -45,5 +48,13 @@ public class TopicoController {
         topicoService.saveTopico(t);
         return "addTopico";
     }
-
+    
+    @GetMapping(value="/{id}")
+    public ModelAndView searchTopicoById(@PathVariable("id") Integer id){
+        idUser = id;
+        List<Topico> allByIdTopico = (List<Topico>) topicoService.getAllTopicoById(idUser);
+        ModelAndView andView = new ModelAndView("addTopico");
+        andView.addObject("topicosUser", allByIdTopico);
+        return andView;
+    }
 }

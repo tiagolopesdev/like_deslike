@@ -7,6 +7,7 @@ package dev.service;
 
 import dev.model.entities.Topico;
 import dev.model.repositories.TopicoRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,10 @@ public class TopicoService {
 
     public Topico saveTopico(Topico t) {
         return topicoRepository.save(t);
+    }
+    
+    public List<Topico> getAllTopicoById(Integer id){
+        return topicoRepository.findByTopicoUser(id);
     }
 
 }

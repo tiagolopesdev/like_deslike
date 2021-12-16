@@ -6,7 +6,9 @@
 package dev.model.repositories;
 
 import dev.model.entities.Topico;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 
@@ -17,8 +19,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TopicoRepository extends JpaRepository<Topico, Integer>{
     
-//    @Query("select t from Topico t inner join Usuario u where u.id = :id")
-//    public List<Topico> findByTopicoUser(Integer id);
+    @Query("select t from Topico t join t.usuario u where u.id = :id")
+    public List<Topico> findByTopicoUser(Integer id);
     
     
 }
