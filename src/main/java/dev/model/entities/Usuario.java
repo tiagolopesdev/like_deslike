@@ -32,8 +32,11 @@ public class Usuario {
 
     private String nome;
     
-    @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario")
     private List<Topico> topico = new ArrayList<Topico>();
+    
+    @OneToMany(mappedBy = "usuario")
+    private List<Voto> votos = new ArrayList<Voto>();
 
     public Usuario() {
     }

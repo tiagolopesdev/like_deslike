@@ -32,6 +32,10 @@ public class Voto {
     @ManyToOne
     @JoinColumn(name = "id_topico")
     private Topico topico;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
     public Voto() {
     }
