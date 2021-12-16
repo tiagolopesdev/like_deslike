@@ -6,15 +6,20 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Adicionar Topico</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>
-            <h1>Escolha uma ação</h1>
-            <button><a >Adicionar tópico</a></button>
-            <button type="submit">Listar tópicos</button>
+            <h1>Inserir topico</h1>
+            <form method="POST" action="/topico">
+                <label>Assunto</label>
+                <input type="text" name="assunto">
+                <label>Mensagem</label>
+                <input type="text" name="mensagem">
+                <button type="submit">Save</button>
+            </form>
         </div>
     </body>
 </html>
