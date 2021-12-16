@@ -14,8 +14,8 @@ import lombok.Getter;
 @Getter
 public enum SituacaoAtualTopico {
     
-    UPVOTE("Curti"), 
-    DOWNVOTE("Descurtir");
+    POSITIVO("Positivo"), 
+    NEGATIVO("Negativo");
 
     private String descricao;
 
