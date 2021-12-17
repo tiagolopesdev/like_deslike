@@ -35,11 +35,12 @@ public class TopicoController {
     Usuario usuario = new Usuario();
     Integer idUser;
 
-////    @RequestMapping(value = "/{id}")
-//    public String formForSave(@PathVariable("id") Integer id) {
-//        idUser = id;
-//        return "addTopico";
-//    }
+//    @RequestMapping(value = "/{id}")
+    @GetMapping("insert/{id}")
+    public String formForSave(@PathVariable("id") Integer id) {
+        idUser = id;
+        return "addTopico";
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     public String save(Topico t) {
@@ -49,12 +50,20 @@ public class TopicoController {
         return "addTopico";
     }
     
-    @GetMapping(value="/{id}")
-    public ModelAndView searchTopicoById(@PathVariable("id") Integer id){
-        idUser = id;
+    @GetMapping()
+    public ModelAndView searchTopicoById(){
+      
         List<Topico> allByIdTopico = (List<Topico>) topicoService.getAllTopicoById(idUser);
-        ModelAndView andView = new ModelAndView("addTopico");
+        ModelAndView andView = new ModelAndView("myTopicos");
         andView.addObject("topicosUser", allByIdTopico);
+        return andView;
+    }
+    
+    @GetMapping("/allTopicos")
+    public ModelAndView searchAllTopicos(){
+        List<Topico> allTopicos = (List<Topico>) topicoService.getAllTopico();
+        ModelAndView andView = new ModelAndView("allTopicos");
+        andView.addObject("topicosUsers", allTopicos);
         return andView;
     }
 }

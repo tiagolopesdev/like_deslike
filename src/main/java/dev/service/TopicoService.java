@@ -28,5 +28,9 @@ public class TopicoService {
     public List<Topico> getAllTopicoById(Integer id){
         return topicoRepository.findByTopicoUser(id);
     }
+    
+    public Iterable<Topico> getAllTopico(){
+        return topicoRepository.findAll();
+    }
 
 }

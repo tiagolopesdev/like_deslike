@@ -20,28 +20,10 @@ and open the template in the editor.
                 <input type="text" name="mensagem">
                 <button type="submit">Save</button>
             </form>
-            <br>
-            <br>
-            <br>
         </div>
-        <div>
-            <h2>Meus tópicos</h2>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Assunto</th>
-                        <th>Mensagem</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="topicoUser : ${topicosUser}">
-                        <td th:text="${topicoUser.id}"></td>
-                        <td th:text="${topicoUser.assunto}"></td>
-                        <td th:text="${topicoUser.mensagem}"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <br>
+        <br>
+        <h3><a th:href="@{/topico}">Meus tópicos</a></h3>
+        <h3><a th:href="@{/topico/allTopicos}">Ir para tópicos gerais</a></h3>
     </body>
 </html>

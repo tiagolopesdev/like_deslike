@@ -6,34 +6,30 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Tópicos</title>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>
-            <h1>Todos os tópicos</h1>
+            <h2>Meus tópicos</h2>
             <table border="1">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Assunto</th>
                         <th>Mensagem</th>
-                        <th>Curti</th>
-                        <th>Descurtir</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="topico : ${topicosUsers}">
-                        <td th:text="${topico.id}"></td>
-                        <td th:text="${topico.assunto}"></td>
-                        <td th:text="${topico.mensagem}"></td>
-                        <td><a th:href="@{'/voto/saveVoto/'+${topico.id}/}">Curtir</a></td>
-                        <!--<td><a th:href="@{/voto/saveVoto/{idUser}/topico/{idTopico}}">Curtir</a></td>-->
-                        <td>Descurtir</td>
+                    <tr th:each="topicoUser : ${topicosUser}">
+                        <td th:text="${topicoUser.id}"></td>
+                        <td th:text="${topicoUser.assunto}"></td>
+                        <td th:text="${topicoUser.mensagem}"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <!--<h3><a th:href="@{'/topico/insert/'+${id}}">Voltar</a></h3>-->
     </body>
 </html>
