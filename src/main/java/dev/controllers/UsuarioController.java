@@ -30,6 +30,6 @@ public class UsuarioController {
     @RequestMapping(method=RequestMethod.POST)
     public String save(Usuario u){
         usuarioService.saveUser(u);
-        return "addUser";
+        return "redirect:/topico/insert/"+u.getId();
     }
 }
