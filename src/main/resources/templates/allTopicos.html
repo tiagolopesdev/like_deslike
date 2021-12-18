@@ -13,6 +13,7 @@ and open the template in the editor.
     <body>
         <div>
             <h1>Todos os tópicos</h1>
+            <!--<a th:href="@{/topico/insert/${id}}">Voltar</a>-->
             <table border="1">
                 <thead>
                     <tr>
@@ -28,7 +29,7 @@ and open the template in the editor.
                         <td th:text="${topico.id}"></td>
                         <td th:text="${topico.assunto}"></td>
                         <td th:text="${topico.mensagem}"></td>
-                        <td><a th:href="@{'/voto/saveVoto/'+${topico.id}/}">Curtir</a></td>
+                        <td><a th:href="@{'/voto/curtir/'+${topico.id}}">Curtir</a></td>
                         <!--<td><a th:href="@{/voto/saveVoto/{idUser}/topico/{idTopico}}">Curtir</a></td>-->
                         <td>Descurtir</td>
                     </tr>

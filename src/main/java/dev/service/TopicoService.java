@@ -24,13 +24,17 @@ public class TopicoService {
     public Topico saveTopico(Topico t) {
         return topicoRepository.save(t);
     }
-    
-    public List<Topico> getAllTopicoById(Integer id){
+
+    public List<Topico> getAllTopicoById(Integer id) {
         return topicoRepository.findByTopicoUser(id);
     }
-    
-    public Iterable<Topico> getAllTopico(){
+
+    public Iterable<Topico> getAllTopico() {
         return topicoRepository.findAll();
+    }
+
+    public Topico getTopicoById(int id) {
+        return topicoRepository.findById(id).get();
     }
 
 }
