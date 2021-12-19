@@ -25,32 +25,48 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/voto")
 public class VotoController {
-    
+
     @Autowired
     private VotoRepository votoRepository;
-    
+
     @Autowired
     private TopicoController topicoController;
-    
+
     @Autowired
-    private TopicoService topicoService; 
-    
+    private TopicoService topicoService;
+
     @Autowired
     private UsuarioService usuarioService;
-    
+
     Usuario u = new Usuario();
     Topico t = new Topico();
-    
-    @RequestMapping(value="/curtir/{id}",method=RequestMethod.GET)
-    public String computaVoto(@PathVariable("id") Integer id){
+
+    @RequestMapping(value = "/curtir/{id}", method = RequestMethod.GET)
+    public String computaUpVoto(@PathVariable("id") Integer id) {
         u = usuarioService.getUserById(topicoController.idUser);
         t = topicoService.getTopicoById(id);
-        return "topicoCurtido";
+        return "selectUpvote";
+    }
+
+    @RequestMapping(value = "/descurtir/{id}", method = RequestMethod.GET)
+    public String computaDownVoto(@PathVariable("id") Integer id) {
+        u = usuarioService.getUserById(topicoController.idUser);
+        t = topicoService.getTopicoById(id);
+        return "selectDownvote";
+    }
+
+    @PostMapping("/upvote")
+    public String saveUpVoteController(Voto v) {
+        v.setUpVote(1);
+        v.setUsuario(u);
+        v.setTopico(t);
+        votoRepository.save(v);
+        return "redirect:/topico/allTopicos";
     }
     
-    @PostMapping()
-    public String saveVotoCurtiController(Voto v){
-        v.setUpVote(1);
+    @PostMapping("/downvote")
+    public String saveDownVoteController(Voto v) {
+        v.setDownVote(1);
         v.setUsuario(u);
         v.setTopico(t);
         votoRepository.save(v);

@@ -35,7 +35,6 @@ public class TopicoController {
     Usuario usuario = new Usuario();
     Integer idUser;
 
-//    @RequestMapping(value = "/{id}")
     @GetMapping("/insert/{id}")
     public String formForSave(@PathVariable("id") Integer id) {
         idUser = id;

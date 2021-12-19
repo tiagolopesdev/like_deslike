@@ -30,8 +30,7 @@ and open the template in the editor.
                         <td th:text="${topico.assunto}"></td>
                         <td th:text="${topico.mensagem}"></td>
                         <td><a th:href="@{'/voto/curtir/'+${topico.id}}">Curtir</a></td>
-                        <!--<td><a th:href="@{/voto/saveVoto/{idUser}/topico/{idTopico}}">Curtir</a></td>-->
-                        <td>Descurtir</td>
+                        <td><a th:href="@{'/voto/descurtir/'+${topico.id}}">Descurtir</a></td>
                     </tr>
                 </tbody>
             </table>
