@@ -12,22 +12,18 @@ and open the template in the editor.
     </head>
     <body>
         <div>
-            <h2>Meus tópicos</h2>
+            <h2>Comentarios</h2>
             <table border="1">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Assunto</th>
                         <th>Mensagem</th>
-                        <th>Comentários</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="topicoUser : ${topicosUser}">
-                        <td th:text="${topicoUser.id}"></td>
-                        <td th:text="${topicoUser.assunto}"></td>
-                        <td th:text="${topicoUser.mensagem}"></td>
-                        <td><a th:href="@{'/comentario/getComentariosByTopico/'+${topicoUser.id}}">Ir</a></td>
+                    <tr th:each="comentario : ${comentarios}">
+                        <td th:text="${comentario.id}"></td>
+                        <td th:text="${comentario.mensagem}"></td>
                     </tr>
                 </tbody>
             </table>

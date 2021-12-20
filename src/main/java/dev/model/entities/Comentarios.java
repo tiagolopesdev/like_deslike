@@ -28,6 +28,8 @@ public class Comentarios {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String mensagem;
+
     @ManyToOne()
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
@@ -39,7 +41,8 @@ public class Comentarios {
     public Comentarios() {
     }
 
-    public Comentarios(Usuario usuario, Topico topico) {
+    public Comentarios(String mensagem, Usuario usuario, Topico topico) {
+        this.mensagem = mensagem;
         this.usuario = usuario;
         this.topico = topico;
     }

@@ -51,7 +51,6 @@ public class TopicoController {
     
     @GetMapping()
     public ModelAndView searchTopicoById(){
-      
         List<Topico> allByIdTopico = (List<Topico>) topicoService.getAllTopicoById(idUser);
         ModelAndView andView = new ModelAndView("myTopicos");
         andView.addObject("topicosUser", allByIdTopico);
