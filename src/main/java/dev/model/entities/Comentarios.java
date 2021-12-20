@@ -5,17 +5,16 @@
  */
 package dev.model.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
+
 /**
  *
  * @author tiago
@@ -23,30 +22,26 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Topico {
+public class Comentarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String assunto;
-    private String mensagem;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "topico")
-    private List<Voto> voto = new ArrayList<Voto>();
+    @ManyToOne()
+    @JoinColumn(name = "topico_id")
+    private Topico topico;
 
-    @OneToMany(mappedBy = "topico")
-    private List<Comentarios> cs = new ArrayList<Comentarios>();
-
-    public Topico() {
+    public Comentarios() {
     }
 
-    public Topico(String assunto, String mensagem) {
-        this.assunto = assunto;
-        this.mensagem = mensagem;
+    public Comentarios(Usuario usuario, Topico topico) {
+        this.usuario = usuario;
+        this.topico = topico;
     }
 
 }

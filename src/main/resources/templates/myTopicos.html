@@ -19,6 +19,7 @@ and open the template in the editor.
                         <th>Id</th>
                         <th>Assunto</th>
                         <th>Mensagem</th>
+                        <th>Comentários</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,7 @@ and open the template in the editor.
                         <td th:text="${topicoUser.id}"></td>
                         <td th:text="${topicoUser.assunto}"></td>
                         <td th:text="${topicoUser.mensagem}"></td>
+                        <td><a href="@{}">Ir</a></td>
                     </tr>
                 </tbody>
             </table>

@@ -37,6 +37,9 @@ public class Usuario {
     
     @OneToMany(mappedBy = "usuario")
     private List<Voto> votos = new ArrayList<Voto>();
+    
+    @OneToMany(mappedBy = "usuario")
+    private List<Comentarios> cs = new ArrayList<Comentarios>();
 
     public Usuario() {
     }
