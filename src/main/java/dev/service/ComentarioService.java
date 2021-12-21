@@ -24,5 +24,9 @@ public class ComentarioService {
     public List<Comentarios> getAllComentarioById(Integer id){
         return comentarioRepository.findByComentarioUser(id);
     }
+    
+    public Comentarios saveComentarioService(Comentarios comentario){
+        return comentarioRepository.save(comentario);
+    }
 
 }
