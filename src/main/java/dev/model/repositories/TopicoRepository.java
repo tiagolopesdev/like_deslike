@@ -22,5 +22,4 @@ public interface TopicoRepository extends JpaRepository<Topico, Integer>{
     @Query("select t from Topico t join t.usuario u where u.id = :id")
     public List<Topico> findByTopicoUser(Integer id);
     
-    
 }

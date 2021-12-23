@@ -8,6 +8,8 @@ package dev.model.entities;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,6 +32,9 @@ public class Topico {
     private int id;
     private String assunto;
     private String mensagem;
+    
+    @Enumerated(EnumType.STRING)
+    private SituacaoAtualTopico situacaoAtualTopico;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")

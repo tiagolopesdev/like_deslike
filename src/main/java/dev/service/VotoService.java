@@ -5,6 +5,8 @@
  */
 package dev.service;
 
+import dev.model.entities.SituacaoAtualTopico;
+import dev.model.entities.Topico;
 import dev.model.entities.Voto;
 import dev.model.repositories.VotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,18 @@ public class VotoService {
     @Autowired
     private VotoRepository votoRepository;
     
+    Topico topico = new Topico();
+    
     public Voto save(Voto v){
         return votoRepository.save(v);
     }
+    
+    public Integer calcSituacaoTopico(Integer idTopico){
+        Integer calc;
+        calc = votoRepository.getUpVoteByIdTopico(idTopico).size() - 
+                votoRepository.getDownVoteByIdTopico(idTopico).size();
+        System.out.println("Valor CAL => "+calc);
+        return calc;
+    }
+    
 }

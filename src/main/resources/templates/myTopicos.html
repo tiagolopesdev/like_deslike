@@ -19,6 +19,7 @@ and open the template in the editor.
                         <th>Id</th>
                         <th>Assunto</th>
                         <th>Mensagem</th>
+                        <th>Situação</th>
                         <th>Comentários</th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@ and open the template in the editor.
                         <td th:text="${topicoUser.id}"></td>
                         <td th:text="${topicoUser.assunto}"></td>
                         <td th:text="${topicoUser.mensagem}"></td>
+                        <td th:text="${topicoUser.situacaoAtualTopico}"></td>
                         <td><a th:href="@{'/comentario/getComentariosByTopico/'+${topicoUser.id}}">Ir</a></td>
                     </tr>
                 </tbody>

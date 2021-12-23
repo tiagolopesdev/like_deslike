@@ -9,6 +9,7 @@ import dev.model.entities.Topico;
 import dev.model.entities.Usuario;
 import dev.service.TopicoService;
 import dev.service.UsuarioService;
+import dev.service.VotoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,10 @@ public class TopicoController {
 
     @Autowired
     private UsuarioService usuarioService;
-    
+
+    @Autowired
+    private VotoService votoService;
+
     Usuario usuario = new Usuario();
     Integer idUser;
 
@@ -48,17 +52,18 @@ public class TopicoController {
         topicoService.saveTopico(t);
         return "addTopico";
     }
-    
+
     @GetMapping()
-    public ModelAndView searchTopicoById(){
+    public ModelAndView searchTopicoById() {
         List<Topico> allByIdTopico = (List<Topico>) topicoService.getAllTopicoById(idUser);
+        //votoService.calcSituacaoTopico(idUser);
         ModelAndView andView = new ModelAndView("myTopicos");
         andView.addObject("topicosUser", allByIdTopico);
         return andView;
     }
-    
+
     @GetMapping("/allTopicos")
-    public ModelAndView searchAllTopicos(){
+    public ModelAndView searchAllTopicos() {
         List<Topico> allTopicos = (List<Topico>) topicoService.getAllTopico();
         ModelAndView andView = new ModelAndView("allTopicos");
         andView.addObject("topicosUsers", allTopicos);
