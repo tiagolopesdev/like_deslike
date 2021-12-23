@@ -5,10 +5,22 @@
  */
 package dev.model.entities;
 
+import lombok.Getter;
+
 /**
  *
  * @author tiago
  */
+@Getter
 public enum SituacaoAtualTopico {
-    POSITIVO, NEGATIVO;
+    
+    POSITIVO("Positivo"), 
+    NEGATIVO("Negativo");
+
+    private String descricao;
+
+    private SituacaoAtualTopico(String descricao) {
+        this.descricao = descricao;
+    }
+
 }

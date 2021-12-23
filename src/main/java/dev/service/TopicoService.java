@@ -17,19 +17,24 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TopicoService {
-    
+
     @Autowired
     private TopicoRepository topicoRepository;
-    
-    public Topico saveTopico(Topico t){
+
+    public Topico saveTopico(Topico t) {
         return topicoRepository.save(t);
     }
-    
-    public List<Topico> findAllTopicos(){
-        return (List<Topico>) topicoRepository.findAll();
-    }
-    
-    public Iterable<Topico> getAllTopicosByUser(Integer id){
+
+    public List<Topico> getAllTopicoById(Integer id) {
         return topicoRepository.findByTopicoUser(id);
     }
+
+    public Iterable<Topico> getAllTopico() {
+        return topicoRepository.findAll();
+    }
+
+    public Topico getTopicoById(int id) {
+        return topicoRepository.findById(id).get();
+    }
+
 }

@@ -12,22 +12,24 @@ and open the template in the editor.
     </head>
     <body>
         <div>
-            <h1>Usuarios</h1>
+            <h2>Meus tópicos</h2>
             <table border="1">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nome</th>
-                        <th>Acction</th>
-                        <th>Acction</th>
+                        <th>Assunto</th>
+                        <th>Mensagem</th>
+                        <th>Situação</th>
+                        <th>Comentários</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="user : ${users}">
-                        <td th:text="${user.id}"></td>
-                        <td th:text="${user.nome}"></td>
-                        <td><a th:href="@{'/topico/formTopico/'+ ${user.id}}">Inserir Tópico</a></td>
-                        <td><a th:href="@{/topico}">Listar todos os Tópicos</a></td>
+                    <tr th:each="topicoUser : ${topicosUser}">
+                        <td th:text="${topicoUser.id}"></td>
+                        <td th:text="${topicoUser.assunto}"></td>
+                        <td th:text="${topicoUser.mensagem}"></td>
+                        <td th:text="${topicoUser.situacaoAtualTopico}"></td>
+                        <td><a th:href="@{'/comentario/getComentariosByTopico/'+${topicoUser.id}}">Ir</a></td>
                     </tr>
                 </tbody>
             </table>

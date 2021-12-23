@@ -7,6 +7,7 @@ package dev.service;
 
 import dev.model.entities.Usuario;
 import dev.model.repositories.UsuarioRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,19 +17,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UsuarioService {
-    
+
     @Autowired
     private UsuarioRepository usuarioRepository;
-    
-    public Usuario save(Usuario u){
+
+    public Usuario saveUser(Usuario u) {
         return usuarioRepository.save(u);
     }
     
     public Usuario getUserById(int id){
         return usuarioRepository.findById(id).get();
     }
-    
-    public Iterable<Usuario> getAllUsers(){
-        return usuarioRepository.findAll();
-    }
+
 }

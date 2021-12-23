@@ -22,27 +22,29 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Votos {
+public class Comentarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Integer upVote;
-    private Integer downVote;
-    
-    @ManyToOne
+
+    private String mensagem;
+
+    @ManyToOne()
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    public Votos() {
+    @ManyToOne()
+    @JoinColumn(name = "topico_id")
+    private Topico topico;
+
+    public Comentarios() {
     }
 
-    public Votos(Integer upVote, Integer downVote) {
-        this.upVote = upVote;
-        this.downVote = downVote;
+    public Comentarios(String mensagem, Usuario usuario, Topico topico) {
+        this.mensagem = mensagem;
+        this.usuario = usuario;
+        this.topico = topico;
     }
-    
-    public int calcularVotos(){
-        Integer statusTopico = getUpVote() - getDownVote();
-        return statusTopico;
-    }
+
 }

@@ -6,24 +6,24 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Adicionar Topico</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>
-            <h1>Inserir Topico</h1>
-
+            <h1>Inserir topico</h1>
             <form method="POST" action="/topico">
-
                 <label>Assunto</label>
-                <input type="text" value="" name="assunto"><br>
-
+                <input type="text" name="assunto">
                 <label>Mensagem</label>
-                <input type="text" value="" name="mensagem"><br>
-
+                <input type="text" name="mensagem">
                 <button type="submit">Save</button>
             </form>
         </div>
+        <br>
+        <br>
+        <h3><a th:href="@{/topico}">Meus tópicos</a></h3>
+        <h3><a th:href="@{/topico/allTopicos}">Ir para tópicos gerais</a></h3>
     </body>
 </html>

@@ -7,9 +7,9 @@ package dev.controllers;
 
 import dev.model.entities.Topico;
 import dev.model.entities.Usuario;
-import dev.model.repositories.TopicoRepository;
 import dev.service.TopicoService;
 import dev.service.UsuarioService;
+import dev.service.VotoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,44 +29,44 @@ public class TopicoController {
 
     @Autowired
     private TopicoService topicoService;
-    
+
     @Autowired
     private UsuarioService usuarioService;
-    
-    @Autowired
-    private TopicoRepository topicoRepository;
-    
-    Usuario user = new Usuario();
-    
-    Topico topico = new Topico();
 
+    @Autowired
+    private VotoService votoService;
+
+    Usuario usuario = new Usuario();
     Integer idUser;
-    String nome;
-    
-    @RequestMapping(value="/formTopico/{id}", method = RequestMethod.GET)
-    public String getForm(@PathVariable("id") Integer id){
-        user = usuarioService.getUserById(id);
+
+    @GetMapping("/insert/{id}")
+    public String formForSave(@PathVariable("id") Integer id) {
         idUser = id;
-        //System.out.println("Id do usuario"+idUser);
-        return "addAndGetTopico";
+        return "addTopico";
     }
-    
+
     @RequestMapping(method = RequestMethod.POST)
-    public String save(Topico t){
-        //user = usuarioService.getUserById(idUser);
-        //System.out.println("Id do user => "+user.getId());
-        topico.setUsuario(user);
+    public String save(Topico t) {
+        usuario = usuarioService.getUserById(idUser);
+        t.setUsuario(usuario);
         topicoService.saveTopico(t);
-        return "addAndGetTopico";
+        return "addTopico";
     }
-    
-    @GetMapping
-    public ModelAndView searchTopicos(){
-        List<Topico> allTopicos = topicoService.findAllTopicos();
-        ModelAndView modelAndView = new ModelAndView("getAllTopicos");
-        modelAndView.addObject("topicos", allTopicos);
-        return modelAndView; 
+
+    @GetMapping()
+    public ModelAndView searchTopicoById() {
+        List<Topico> allByIdTopico = (List<Topico>) topicoService.getAllTopicoById(idUser);
+        //votoService.calcSituacaoTopico(idUser);
+        ModelAndView andView = new ModelAndView("myTopicos");
+        andView.addObject("topicosUser", allByIdTopico);
+        return andView;
     }
-    
-    
+
+    @GetMapping("/allTopicos")
+    public ModelAndView searchAllTopicos() {
+        List<Topico> allTopicos = (List<Topico>) topicoService.getAllTopico();
+        ModelAndView andView = new ModelAndView("allTopicos");
+        andView.addObject("topicosUsers", allTopicos);
+        return andView;
+    }
 }

@@ -12,25 +12,18 @@ and open the template in the editor.
     </head>
     <body>
         <div>
-            <h1>Todos os topicos</h1>
+            <h2>Comentarios</h2>
             <table border="1">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Assunto</th>
                         <th>Mensagem</th>
-                        <th>Status</th>
-                        <th>Id usuario</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="topico : ${topicos}">
-                        <td th:text="${topico.id}"></td>
-                        <td th:text="${topico.assunto}"></td>
-                        <td th:text="${topico.mensagem}"></td>
-                        <td th:text="${topico.sat}"></td>
-<!--                        <td><a th:href="@{'/product/formProduct/' + ${commerce.id}}">Insert Products</a></td>
-                        <td><a th:href="@{'/product/getAllProductsByCommerce'}">List Products</a></td>-->
+                    <tr th:each="comentario : ${comentarios}">
+                        <td th:text="${comentario.id}"></td>
+                        <td th:text="${comentario.mensagem}"></td>
                     </tr>
                 </tbody>
             </table>

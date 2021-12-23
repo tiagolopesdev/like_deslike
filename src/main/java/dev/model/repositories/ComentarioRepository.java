@@ -5,21 +5,19 @@
  */
 package dev.model.repositories;
 
-import dev.model.entities.Topico;
+import dev.model.entities.Comentarios;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 
 /**
  *
  * @author tiago
  */
 @Repository
-public interface TopicoRepository extends JpaRepository<Topico, Integer>{
+public interface ComentarioRepository extends JpaRepository<Comentarios, Integer>{
     
-    @Query("select t from Topico t join t.usuario u where u.id = :id")
-    public List<Topico> findByTopicoUser(Integer id);
-    
+    @Query("select c from Comentarios c join c.topico t where t.id = :id")
+    public List<Comentarios> findByComentarioUser(Integer id); 
 }
