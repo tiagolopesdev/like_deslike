@@ -46,11 +46,13 @@ public class TopicoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String save(Topico t) {
+    public ModelAndView save(Topico t) {
         usuario = usuarioService.getUserById(idUser);
         t.setUsuario(usuario);
         topicoService.saveTopico(t);
-        return "addTopico";
+        ModelAndView andView = new ModelAndView("addTopico");
+        andView.addObject("mensagemSucess", "Tópico inserido. Confira em 'meus topicos'.");
+        return andView;
     }
 
     @GetMapping()

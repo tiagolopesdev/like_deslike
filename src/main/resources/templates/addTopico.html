@@ -4,16 +4,22 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Adicionar Topico</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>
             <h1>Inserir topico</h1>
             <form method="POST" action="/topico">
+                <div th:if="${!#strings.isEmpty(mensagemSucess)}">
+                    <span th:text="${mensagemSucess}"></span>
+                </div>
+                <br>
+                <br>
                 <label>Assunto</label>
                 <input type="text" name="assunto">
                 <label>Mensagem</label>
