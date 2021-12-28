@@ -13,10 +13,12 @@ and open the template in the editor.
     </head>
     <body>
         <div>
-            <h1>Inserir topico</h1>
+            <div th:if="${!#strings.isEmpty(mensagemNameUser)}">
+                <h1 th:text="${mensagemNameUser}"></h1>
+            </div>
             <form method="POST" action="/topico">
                 <div th:if="${!#strings.isEmpty(mensagemSucess)}">
-                    <span th:text="${mensagemSucess}"></span>
+                    <h2><span th:text="${mensagemSucess}"></span></h2>
                 </div>
                 <br>
                 <br>

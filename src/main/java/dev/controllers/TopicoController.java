@@ -40,9 +40,12 @@ public class TopicoController {
     Integer idUser;
 
     @GetMapping("/insert/{id}")
-    public String formForSave(@PathVariable("id") Integer id) {
+    public ModelAndView formForSave(@PathVariable("id") Integer id) {
         idUser = id;
-        return "addTopico";
+        usuario = usuarioService.getUserById(idUser);
+        ModelAndView andView = new ModelAndView("addTopico");
+        andView.addObject("mensagemNameUser", usuario.getNome()+", insira um topico!");
+        return andView;
     }
 
     @RequestMapping(method = RequestMethod.POST)
